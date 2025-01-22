@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Component
-public abstract class UserDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
-    public UserDetails loadUserByUserName(String userName) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
             User user = userRepository.findByUserName(userName);
             if (user != null) {
                 UserDetails userDetails = org.springframework.security.core.userdetails.User.builder().username(user.getUserName())
@@ -27,4 +27,6 @@ public abstract class UserDetailsServiceImpl implements UserDetailsService {
             }
             throw new UsernameNotFoundException("User not found with username: " + userName);
     }
+
+
 }
