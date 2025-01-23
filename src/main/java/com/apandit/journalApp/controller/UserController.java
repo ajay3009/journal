@@ -1,6 +1,7 @@
 package com.apandit.journalApp.controller;
 
 import com.apandit.journalApp.entity.User;
+import com.apandit.journalApp.repository.UserRepository;
 import com.apandit.journalApp.service.JournalEntryService;
 import com.apandit.journalApp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @PutMapping
     public ResponseEntity<?> updateUser(@RequestBody User user) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -28,6 +32,13 @@ public class UserController {
         userDb.setUserName(user.getUserName());
         userDb.setPassword(user.getPassword());
         userService.saveEntry(userDb);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<?> deleteUserById() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        userRepository.deleteByUserName(authentication.getName());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
