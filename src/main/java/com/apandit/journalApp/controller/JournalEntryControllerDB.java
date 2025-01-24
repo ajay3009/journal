@@ -8,6 +8,8 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -23,8 +25,10 @@ public class JournalEntryControllerDB {
     @Autowired
     private UserService userService;
 
-    @GetMapping("{userName}")
-    public ResponseEntity<List<JournalEntry>> getAllEntriesByUser(@PathVariable String userName) {
+    @GetMapping
+    public ResponseEntity<List<JournalEntry>> getAllEntriesByUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String userName = authentication.getName();
         User user = userService.findByUserName(userName);
         List<JournalEntry> all = user.getJournalEntry();
         if (all != null && !all.isEmpty()) {
