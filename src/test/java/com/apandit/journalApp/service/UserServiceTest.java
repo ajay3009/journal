@@ -10,11 +10,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Configuration;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
+@Configuration
 public class UserServiceTest {
 
     @Autowired
