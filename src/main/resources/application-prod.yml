@@ -13,3 +13,10 @@ server:
   port: 8081
   servlet:
     context-path: /journals
+
+
+logging:
+  level:
+    com:
+      apandit:
+        journalApp: DEBUG
