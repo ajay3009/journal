@@ -4,7 +4,10 @@ import com.apandit.journalApp.entity.JournalEntry;
 import com.apandit.journalApp.entity.User;
 import com.apandit.journalApp.repository.JournalEntryRepository;
 import com.apandit.journalApp.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class UserService {
 
     @Autowired
@@ -33,6 +37,11 @@ public class UserService {
             userRepository.save(user);
             return true;
         } catch (Exception e) {
+            log.info("vvvvvdvvvvvssv");
+            log.warn("vvvvvdvvvvvssv");
+            log.error("Error occurred for {}", user.getUserName(), e);
+            log.trace("vvvvvdvvvvvssv");
+            log.debug("vvvvvdvvvvvssv");
             return false;
         }
 
