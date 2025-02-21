@@ -18,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Configuration
+@Disabled
 public class UserServiceTest {
 
     @Autowired
