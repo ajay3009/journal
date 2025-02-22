@@ -3,6 +3,7 @@ package com.apandit.journalApp.service;
 import com.apandit.journalApp.entity.JournalEntry;
 import com.apandit.journalApp.entity.User;
 import com.apandit.journalApp.repository.JournalEntryRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class JournalEntryService {
 
     @Autowired
@@ -54,7 +56,7 @@ public class JournalEntryService {
                 journalEntryRepository.deleteById(id);
             }
         } catch (Exception e) {
-            System.out.println(e);
+            log.error("Error", e);
             throw new RuntimeException("An error occured while deleting the entry", e);
         }
         return removed;
