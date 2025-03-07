@@ -20,3 +20,7 @@ logging:
     com:
       apandit:
         journalApp: DEBUG
+
+weather:
+  api:
+    key: a3c49a264fa44d2a021c6c0b8f7c2ea9
