@@ -2,7 +2,6 @@ package com.apandit.journalApp.service;
 
 import com.apandit.journalApp.entity.JournalEntry;
 import com.apandit.journalApp.entity.User;
-import com.apandit.journalApp.repository.JournalEntryRepository;
 import com.apandit.journalApp.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
