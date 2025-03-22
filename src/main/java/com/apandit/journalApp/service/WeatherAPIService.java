@@ -1,6 +1,7 @@
 package com.apandit.journalApp.service;
 
 import com.apandit.journalApp.api.response.WeatherResponse;
+import com.apandit.journalApp.cache.ApplicationCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
@@ -18,8 +19,11 @@ public class WeatherAPIService {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private ApplicationCache applicationCache;
+
     public WeatherResponse getWeather(String city) {
-        String finalAPI = API.replace("CITY", city).replace("API", apiKey);
+        String finalAPI = applicationCache.APP_CACHE.get("weather_api").replace("<city>", city).replace("<apiKey>", apiKey);
         ResponseEntity<WeatherResponse> response = restTemplate.exchange(finalAPI, HttpMethod.GET, null, WeatherResponse.class);
         WeatherResponse body = response.getBody();
         return body;
