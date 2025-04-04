@@ -34,7 +34,7 @@ public class UserService {
             return true;
         } catch (Exception e) {
             log.error("Error occurred for {}", user.getUserName(), e);
-            log.trace("vvvvvdvvvvvssvcccc");
+            log.trace("vvvvvdvvv2222vvssvcccc");
             log.debug("vvvvvdvvvvvssv");
             return false;
         }
