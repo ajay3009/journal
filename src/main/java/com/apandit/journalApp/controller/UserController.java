@@ -49,7 +49,7 @@ public class UserController {
         String greetings = "";
         WeatherResponse weather = weatherAPIService.getWeather("New York");
         if (weather != null) {
-            greetings = " weather feels like " + weather.getCurrent().getFeelslike();
+            greetings = " weather feels like almost " + weather.getCurrent().getFeelslike();
         }
         return new ResponseEntity<>( "Hi " + authentication.getName() + greetings , HttpStatus.OK);
     }
